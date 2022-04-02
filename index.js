@@ -1,6 +1,6 @@
 // Crea una lista de contactos con datos predefinidos, cada contacto debe contener
 // el nombre y apellido como una sola cadena de caracteres
-// {ubicacion:[{ciudad:'',direccion:''}]}},
+// Bonus: Añade una función que permita actualizar un contacto//
 const listContact = [
     {id:0,nombre:'Maria',apellido:'Ramos',telefono:78915400,ubicación:[{ciudad:'La Paz',dirección:'Bella Vista'}]},
     {id:1,nombre:'Sara',apellido:'Gallardo',telefono:78915400,ubicación:[{ciudad:'La Paz',dirección:'Bella Vista'}]},
@@ -25,10 +25,24 @@ const deleteListContact=(contacto)=>{
 const getList=(lista)=>{
      return lista
 }   
+// Bonus: Añade una función que permita actualizar un contacto
+const updateContact=(contact)=>{
+    const newListContact =listContact;
+    const indexListContact=newListContact.findIndex(list=>(list.nombre===contact));
+    newListContact[indexListContact].ubicación[0]='cochabamba';
+    newListContact[indexListContact].ubicación[1]='Rosales'
+    newListContact[indexListContact].telefono=777
+    return newListContact[indexListContact]
+}
 // -----------RESULTADOS----------------------------------
  const deleted=deleteListContact('Maria')
 console.log('Eliminar un contacto ',deleted)
 const pushed=pushListContact('Cristopher','arce',333333,'La Paz','Aranjuez');
 console.log('Crear un contacto', pushed);
 const get=getList(pushed)
-console.log('Lista actualizada 👌',get)
+console.log('Lista actualizada 👌',get);
+updateContact('Edson')
+ console.log('contactos actualizado',
+ ...listContact,
+ updateContact
+ )
